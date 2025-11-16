@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Audio Visualizer — Waveform · FFT · Spectrogram</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Audio Visualizer</h1>
+    <p class="subtitle">Upload or record audio → waveform · spectrum · spectrogram (client-side)</p>
+  </header>
+
+  <main class="container">
+    <section class="controls card">
+      <div class="row">
+        <label class="file-button">
+          <input id="fileInput" type="file" accept="audio/*" />
+          <span>Upload Audio</span>
+        </label>
+
+        <div class="record-group">
+          <button id="recordBtn" class="btn">Start Recording</button>
+          <button id="stopBtn" class="btn secondary" disabled>Stop</button>
+        </div>
+
+        <div class="options">
+          <label>Max duration (s)
+            <input id="maxDuration" type="number" min="1" max="60" value="30" />
+          </label>
+          <label>Spectrogram window
+            <select id="specWindow">
+              <option value="1024">1024</option>
+              <option value="2048" selected>2048</option>
+              <option value="4096">4096</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="row info">
+        <div id="fileInfo">No audio loaded</div>
+      </div>
+    </section>
+
+    <section class="visuals">
+      <div class="card vizcard">
+        <h2>Waveform</h2>
+        <canvas id="waveCanvas"></canvas>
+      </div>
+
+      <div class="card vizcard">
+        <h2>Frequency Spectrum (FFT)</h2>
+        <canvas id="specCanvas"></canvas>
+      </div>
+
+      <div class="card vizcard fullwidth">
+        <h2>Spectrogram</h2>
+        <canvas id="spectrogramCanvas"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built with ❤️ by <strong>Amaan Beg</strong></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
